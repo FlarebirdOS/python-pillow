@@ -1,6 +1,6 @@
 pkgname=python-pillow
-pkgver=11.3.0
-pkgrel=1
+pkgver=12.0.0
+pkgrel=2
 pkgdesc='Python Imaging Library (PIL) fork'
 arch=('x86_64')
 url='https://pillow.readthedocs.io'
@@ -25,23 +25,13 @@ makedepends=(
     'libwebp'
     'python-build'
     'python-installer'
+    'python-pybind11'
     'python-setuptools'
     'python-wheel'
     'tk'
 )
 source=(git+ssh://git@github.com/python-pillow/Pillow#tag=${pkgver})
-sha256sums=(b27bbc2dd1581c13005c737f7951c218499744e5409209012fb811a810047001)
-
-prepare() {
-    cd Pillow
-
-    # https://gitlab.archlinux.org/archlinux/packaging/packages/python-pillow/-/issues/3
-    # Added has_feature_version
-    git cherry-pick -n 54f4a346ef89e33eec0f889569a6d280eca70656
-
-    # Updated tests for FreeType 2.14.1
-    git cherry-pick -n 92e671d7970b8f96c50424c0c47efd0a1c95bc51
-}
+sha256sums=(647812449e47570f976d08a0a80f78a8f22040001c9b19e3a490b2a8c3ceac39)
 
 build() {
     cd Pillow
